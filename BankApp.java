@@ -120,7 +120,7 @@ public class BankApp {
         BankAccount[] accounts = new BankAccount[4];
         accounts[0] = new BankAccount(1001, "Rahul", 1234, 5000.0);
         accounts[1] = new BankAccount(1002, "Priya", 2345, 8000.0);
-        accounts[2] = new BankAccount(1003, "Amit", 3456, 3000.0);
+        accounts[2] = new BankAccount(1003, "Ganesh Reddy", 3456, 30000.0);
         accounts[3] = new BankAccount(1004, "Sneha", 4567, 10000.0);
 
         System.out.println("Welcome to Bank Application");
