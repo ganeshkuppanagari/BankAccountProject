@@ -1,28 +1,29 @@
-# 🏦 Simple Bank Account System Using Encapsulation
+# 🏦 Bank Account System (Multiple Accounts & Transfers)
 
-A beginner-level Java project that demonstrates the concept of **Encapsulation** through a simple bank account management system.
+A Java console application demonstrating encapsulation, arrays of objects, and safe account-to-account transfers.
 
 ---
 
 ## 📌 Project Overview
 
-This project simulates a basic bank account system where a user can:
-- Login using a secret PIN
-- Check account balance
+This program stores multiple `BankAccount` objects in an array and allows users to:
+- Login using **account number** and **PIN**
+- Check balance
 - Deposit money
 - Withdraw money
 - View account details
+- Transfer money to another account
+- Update account holder name
 - Exit the application
 
 ---
 
-## 🎯 Objective
+## 🎯 Learning Objectives
 
-The main objective of this project is to understand how **Encapsulation** works in Java.
-
-- Keep important data **private** inside a class
-- Access data **only through public methods**
-- In real banking systems, details like PIN and balance should never be directly accessible from outside the class
+- Understand encapsulation: keep account details private and expose operations via methods
+- Store multiple objects in an array and search them with loops
+- Implement safe transfers where the sender cannot directly modify the receiver's balance
+- Practice constructors, methods, Scanner input, conditionals, loops, and switch-case
 
 ---
 
@@ -31,97 +32,75 @@ The main objective of this project is to understand how **Encapsulation** works 
 ```
 BankAccountProject/
 │
-├── BankAccount.java      # Class with private variables and methods
-├── BankApp.java          # Main class with menu and user interaction
+├── BankApp.java          # Main class (contains BankAccount class and program)
 └── README.md
 ```
 
----
-
-## 🧱 Class Structure
-
-### `BankAccount.java`
-
-| Member | Type | Description |
-|--------|------|-------------|
-| `accountNumber` | `private String` | Stores the account number |
-| `accountHolderName` | `private String` | Stores the account holder's name |
-| `pin` | `private int` | Stores the secret PIN |
-| `balance` | `private double` | Stores the current balance |
-
-#### Methods
-
-| Method | Return Type | Description |
-|--------|-------------|-------------|
-| `login(int enteredPin)` | `boolean` | Verifies the user PIN |
-| `checkBalance()` | `void` | Displays current balance |
-| `deposit(double amount)` | `void` | Adds amount to balance |
-| `withdraw(double amount)` | `void` | Deducts amount from balance |
-| `displayAccountDetails()` | `void` | Shows account number and holder name |
+Note: `BankAccount` is implemented inside `BankApp.java` in this workspace.
 
 ---
 
-## ▶️ How to Run
+## 🧱 BankAccount (summary)
 
-### Step 1: Compile
+Each account contains (all fields private):
+- `accountNumber` (int)
+- `accountHolderName` (String)
+- `pin` (int)
+- `balance` (double)
+
+Key methods:
+- `login(int enteredAccountNumber, int enteredPin)` — authenticate user
+- `checkBalance()` — print current balance
+- `deposit(double amount)` — add funds (amount &gt; 0)
+- `withdraw(double amount)` — remove funds if sufficient balance
+- `displayAccountDetails()` — show account number and holder name
+- `transferAmount(BankAccount receiver, double amount)` — transfer to another account with validations
+- `setAccountHolderName(String newName)` — update holder name
+
+---
+
+## ▶️ How to Build & Run
+
+Compile:
 ```bash
-javac BankAccount.java BankApp.java
+javac BankApp.java
 ```
 
-### Step 2: Run
+Run:
 ```bash
 java BankApp
 ```
 
+Sample accounts included in code:
+- `1001` (Rahul) PIN `1234` balance `5000.0`
+- `1002` (Priya) PIN `2345` balance `8000.0`
+- `1003` (Amit) PIN `3456` balance `3000.0`
+- `1004` (Sneha) PIN `4567` balance `10000.0`
+
 ---
 
-## 🖥️ Sample Output
+## 🖥️ Typical Usage Flow
 
-```
-Enter PIN:
-1234
+1. Start the application
+2. Enter account number and PIN
+3. On successful login, use the menu to choose operations (check balance, deposit, withdraw, display details, transfer, update name, exit)
 
-Login Successful
-
-1. Check Balance
-2. Deposit Amount
-3. Withdraw Amount
-4. Display Account Details
-5. Exit
-
-Enter your choice:
-1
-
-Current Balance: 5000.0
-```
+Transfer rules:
+- Receiver account must exist in the array
+- Sender and receiver cannot be the same
+- Transfer amount must be &gt; 0 and sender must have sufficient balance
 
 ---
 
 ## ✅ Important Conditions
 
-- All instance variables are `private`
-- No direct access to variables from outside the class
-- PIN is never displayed in output
-- Deposit amount must be greater than zero
-- Withdrawal only allowed if sufficient balance exists
-- Menu continues until user chooses Exit
-
----
-
-## 💡 Concepts Used
-
-- **Encapsulation**
-- Classes and Objects
-- Private Instance Variables
-- Parameterized Constructor
-- Public Methods
-- Scanner (User Input)
-- if-else conditions
-- switch-case
-- while loop
+- All account details are private and manipulated only through methods
+- PIN is not displayed anywhere
+- Deposit/withdraw/transfer amounts must be positive
+- Withdrawal/transfer only proceed when sufficient balance is available
 
 ---
 
 ## 👨‍💻 Author
 
-**Ganesh Reddy**  
+**Ganesh Reddy**
